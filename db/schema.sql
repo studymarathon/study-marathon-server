@@ -1,6 +1,6 @@
 use study_marathon;
 
-create table user
+create table member
 (
     id          bigint auto_increment
         primary key,
@@ -27,7 +27,7 @@ create table study_group
     constraint study_group_group_name_uindex
         unique (name),
     constraint study_group_user_id_fk
-        foreign key (owner_id) references user (id)
+        foreign key (owner_id) references member (id)
 );
 
 create table study_group_member
@@ -39,7 +39,7 @@ create table study_group_member
     constraint study_group_member_study_group_id_fk
         foreign key (group_id) references study_group (id),
     constraint study_group_member_user_id_fk
-        foreign key (member_id) references user (id)
+        foreign key (member_id) references member (id)
 );
 
 create table user_role
